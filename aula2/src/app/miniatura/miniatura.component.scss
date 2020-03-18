@@ -1,0 +1,17 @@
+.miniatura {
+    width: 200px;
+    height: 200px;
+    float: left;
+    h2 {
+        font-size: 25px;
+        width: 100%;
+        color: red;
+        text-align: center;
+    }
+    .imagem {
+        width: 100%;
+        height: 200px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

@@ -1,0 +1,12 @@
+<ng-container *ngFor="let miniatura of images; let i = index">
+
+<app-miniatura (click)="deletar(i)"
+*ngIf="miniatura.ativo"
+[imagem]="miniatura.url"
+[titulo]="miniatura.titulo">
+</app-miniatura>
+</ng-container>
+<br>
+<button type="button" name="button" (click)="adicionar()">Adicionar</button>
+<!-- Exibição de component-->
+<router-outlet></router-outlet>
