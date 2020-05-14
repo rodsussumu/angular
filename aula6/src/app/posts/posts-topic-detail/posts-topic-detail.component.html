@@ -1,0 +1,32 @@
+import { PostsTopicsService } from 'src/app/services/posts-topics.service';
+@Component({
+  selector: 'app-posts-topic-detail',
+  templateUrl: './posts-topic-detail.component.html',
+  styleUrls: ['./posts-topic-detail.component.scss']
+})
+export class PostsTopicDetailComponent implements OnInit {
+  // Crie um atributo para armazenar os dados do tópico
+  public topic : any;
+  constructor(
+    private route : ActivatedRoute,
+    // Crie um atributo onde o angular injetará o PostsTopicsService
+    private postsTopicsService : PostsTopicsService
+  ) { }
+  ngOnInit() {
+    let topicId = this.route.snapshot.params.topicId
+    console.log("topicId", topicId)
+    // Chame a função loadData
+    this.loadData(topicId)
+  }
+  
+  // Defina a função loadData
+  async loadData(topicId){
+    try {
+      let res = await this.postsTopicsService.getById(topicId)
+      this.topic = res.data;
+      console.log("this.topic", this.topic)
+    } catch (error) {
+      console.log("Erro ao recuperar os dados do tópico:", error)
+    }
+  }
+}
